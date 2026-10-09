@@ -53,6 +53,45 @@ class GridDataSet:
         plt.title("Labeled Training & Testing Data")
         plt.show()
 
+
+class LinearDataSet:
+    def __init__(self):
+        self.m = 6.3
+        self.b = 92.4
+
+        self.lower_bound = -250
+        self.higher_bound = 250
+
+        self.train_data_size = (200, )
+        self.test_data_size = (100, )
+
+        self.noise_scale = 50
+
+        self.train_data = np.random.uniform(self.lower_bound, self.higher_bound, size=self.train_data_size)
+        self.test_data = np.random.uniform(self.lower_bound, self.higher_bound, size=self.test_data_size)
+
+        self.train_labels_clean = self.train_data * self.m + self.b
+        self.train_labels_noisy = self.train_labels_clean + np.random.normal(scale=self.noise_scale, size=self.train_data_size)
+
+        self.test_labels_clean = self.test_data * self.m + self.b
+        self.test_labels_noisy = self.test_labels_clean + np.random.normal(scale=self.noise_scale, size=self.test_data_size)
+
+    def visualize(self):
+        # Plot Training Data
+        plt.scatter(self.train_data, self.train_labels_clean, color='blue', label='Clean Labels')
+        plt.scatter(self.train_data, self.train_labels_noisy, color='red', label='Noisy Labels')
+        plt.title("Linear Training Data")
+        plt.legend()
+        plt.show()
+
+        # Plot Testing Data
+        plt.scatter(self.test_data, self.test_labels_clean, color='blue', label='Clean Labels')
+        plt.scatter(self.test_data, self.test_labels_noisy, color='red', label='Noisy Labels')
+        plt.title("Linear Testing Data")
+        plt.legend()
+        plt.show()
+
+
 if __name__ == "__main__":
-    dataset = GridDataSet()
+    dataset = LinearDataSet()
     dataset.visualize()
