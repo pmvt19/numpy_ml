@@ -91,7 +91,45 @@ class LinearDataSet:
         plt.legend()
         plt.show()
 
+class BinaryClassificationDataset:
+    def __init__(self):
+
+        self.class_0_mean = (5, 5)
+        self.class_0_scale = 3
+
+        self.class_1_mean = (-2, -4)
+        self.class_1_scale = 3
+
+        self.train_class_size = 100
+        self.test_class_size = 20
+
+        class0_train_data = np.random.normal(loc=self.class_0_mean, scale=self.class_0_scale, size=(self.train_class_size,2))
+        class1_train_data = np.random.normal(loc=self.class_1_mean, scale=self.class_1_scale, size=(self.train_class_size,2))
+
+        class0_test_data = np.random.normal(loc=self.class_0_mean, scale=self.class_0_scale, size=(self.test_class_size,2))
+        class1_test_data = np.random.normal(loc=self.class_1_mean, scale=self.class_1_scale, size=(self.test_class_size,2))
+
+        self.train_data = np.vstack((class0_train_data, class1_train_data))
+        self.test_data = np.vstack((class0_test_data, class1_test_data))
+
+        self.train_labels = np.vstack((np.zeros(self.train_class_size), np.ones(self.train_class_size)))
+        self.test_labels = np.vstack((np.zeros(self.test_class_size), np.ones(self.test_class_size)))
+
+    def visualize(self):
+        # Plot Training Data
+        plt.scatter(self.train_data[:, 0], self.train_data[:, 1], c=self.train_labels)
+        plt.show()
+
+        # Plot Testing Data
+        plt.scatter(self.test_data[:, 0], self.test_data[:, 1], c=self.test_labels)
+        plt.show()
+
+        # Plotting Train & Test Data
+        plt.scatter(self.train_data[:, 0], self.train_data[:, 1], c=self.train_labels)
+        plt.scatter(self.test_data[:, 0], self.test_data[:, 1], c=self.test_labels, alpha=0.3)
+        plt.title("Labeled Training & Testing Data")
+        plt.show()
 
 if __name__ == "__main__":
-    dataset = LinearDataSet()
+    dataset = BinaryClassificationDataset()
     dataset.visualize()
