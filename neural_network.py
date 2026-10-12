@@ -1,12 +1,27 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-class LinearLayer:
+class Layer:
+    def __init__(self):
+        self.cache = {}
+
+    def forward(self, data: np.ndarray):
+        raise NotImplementedError
+
+    def backward(self, de_dh: np.ndarray) -> np.ndarray:
+        raise NotImplementedError
+
+    def clear(self):
+        """
+            Clears the cache state
+        """
+        self.cache = {}
+
+class LinearLayer(Layer):
     def __init__(self, input_size: int, output_size: int):
+        super().__init__()
         self.weights = np.random.normal(size=(input_size, output_size)) # (d, m)
         self.bias = np.random.normal(size=(output_size, 1)) # (m, 1)
-
-        self.cache = {}
 
     def forward(self, data: np.ndarray):
         """
@@ -71,16 +86,9 @@ class LinearLayer:
 
         return de_dx
 
-    def clear(self):
-        """
-            Clears the cache state
-        """
-        self.cache = {}
-
-
-class ReLu:
+class ReLu(Layer):
     def __init__(self):
-        self.cache = {}
+        super().__init__()
 
     def forward(self, data: np.ndarray):
         """
@@ -98,12 +106,9 @@ class ReLu:
         de_dh[data < 0] = 0
         return de_dh
 
-    def clear(self):
-        self.cache = {}
-
-class BinaryCrossEntropyLoss:
+class BinaryCrossEntropyLoss(Layer):
     def __init__(self):
-        self.cache = {}
+        super().__init__()
 
     def sigmoid(self, data: np.ndarray):
         """
@@ -140,10 +145,6 @@ class BinaryCrossEntropyLoss:
 
         de_dz = yhat - y # (B, 1)
         return de_dz
-
-    def clear(self):
-        self.cache = {}
-
 
 class Network:
     def __init__(self):
@@ -201,7 +202,6 @@ class Network:
             plt.plot(losses)
             plt.title("Training Loss")
             plt.show()
-            
 
 if __name__ == "__main__":
     from data_generator import BinaryClassificationDataset
