@@ -148,7 +148,7 @@ class BinaryCrossEntropyLoss(Layer):
 
 class Network:
     def __init__(self):
-        self.layers = [
+        self.layers: list[Layer] = [
             LinearLayer(2, 10),
             ReLu(),
             LinearLayer(10, 1),
