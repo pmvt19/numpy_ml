@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 
 class LinearLayer:
@@ -173,7 +174,9 @@ class Network:
             layer.clear()
         self.loss.clear()
 
-    def train(self, epochs: int, batch_size: int, data: np.ndarray, labels: np.ndarray):
+    def train(self, epochs: int, batch_size: int, data: np.ndarray, labels: np.ndarray, show_training_curve: bool = False):
+        losses = []
+
         N, d = data.shape
         for i in range(epochs):
             # Choose random batch
@@ -192,6 +195,13 @@ class Network:
             self.clear()
 
             print(f"Loss: {loss}")
+            losses.append(loss)
+
+        if show_training_curve:
+            plt.plot(losses)
+            plt.title("Training Loss")
+            plt.show()
+            
 
 if __name__ == "__main__":
     from data_generator import BinaryClassificationDataset
@@ -206,7 +216,7 @@ if __name__ == "__main__":
     yhats, _ = net.forward(dataset.test_data, dataset.test_labels)
     print(f"Test Accuracy: {np.mean((yhats > 0.5).astype(np.int32) == dataset.test_labels)}")
 
-    net.train(epochs=100, batch_size=15, data=dataset.train_data, labels=dataset.train_labels)
+    net.train(epochs=100, batch_size=15, data=dataset.train_data, labels=dataset.train_labels, show_training_curve=True)
 
     yhats, _ = net.forward(dataset.train_data, dataset.train_labels)
     print(f"Train Accuracy: {np.mean((yhats > 0.5).astype(np.int32) == dataset.train_labels)}")
