@@ -112,8 +112,8 @@ class BinaryClassificationDataset:
         self.train_data = np.vstack((class0_train_data, class1_train_data))
         self.test_data = np.vstack((class0_test_data, class1_test_data))
 
-        self.train_labels = np.vstack((np.zeros(self.train_class_size), np.ones(self.train_class_size)))
-        self.test_labels = np.vstack((np.zeros(self.test_class_size), np.ones(self.test_class_size)))
+        self.train_labels = np.vstack((np.zeros((self.train_class_size, 1)), np.ones((self.train_class_size, 1))))
+        self.test_labels = np.vstack((np.zeros((self.test_class_size, 1)), np.ones((self.test_class_size, 1))))
 
     def visualize(self):
         # Plot Training Data
