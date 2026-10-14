@@ -28,7 +28,18 @@ Completed:
 # Numpy ML
 This repository holds numpy implementations of common machine learning algorithms
 
+## Datasets
+### GridDataSet
+(Image of grid dataset)
+
 ## K-Means
+
+```python
+code example
+```
+
+Results:
+Centroids
 
 ## K Nearest Neighbors (KNN)
 
