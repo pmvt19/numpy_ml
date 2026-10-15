@@ -35,7 +35,9 @@ This repository holds numpy implementations of common machine learning algorithm
 ## K-Means
 
 ```python
-code example
+from numpy_ml.k_means import KMeans
+
+kmeans = KMeans()
 ```
 
 Results:
