@@ -38,6 +38,8 @@ This repository holds numpy implementations of common machine learning algorithm
 from numpy_ml.k_means import KMeans
 
 kmeans = KMeans()
+
+kmeans.fit(**data**)
 ```
 
 Results:
