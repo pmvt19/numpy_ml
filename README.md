@@ -47,4 +47,12 @@ Centroids
 
 ## K Nearest Neighbors (KNN)
 
+```python
+from numpy_ml.knn import KNN
+
+knn = KNN()
+
+knn.fit(**data**)
+```
+
 ## Neural Network
