@@ -56,3 +56,7 @@ knn.fit(**data**)
 ```
 
 ## Neural Network
+
+```python 
+from numpy_ml.neuarl_network import LinearLayer, ReLu
+```
