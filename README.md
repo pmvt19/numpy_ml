@@ -58,6 +58,16 @@ The following is a visual representation of the train dataset:
 <img src="./assets/grid_dataset_train_data.png" alt="GridDataset Training Data" width="75%">
 </p>
 
+### Linear Dataset
+
+Ground Truth Formula: `y = mx + b` where `m=6.3` and `b=92.4`
+
+The dataset `x` range is `[-250, 250]`
+
+<p align="center">
+<img src="./assets/linear_dataset_train.png" alt="Linear Dataset Training Data" width="75%">
+</p>
+
 ## K-Means
 
 ```python
@@ -77,8 +87,25 @@ centroids = kmeans.fit(dataset.train_data)
 labels = kmeans.predict(dataset.test_data)
 ```
 
-Results:
-Centroids
+### Predicted Centroids for GridDataSet
+```
+[
+ [2.38650151 2.9756075 ]
+ [0.97735307 0.9429869 ]
+ [2.98404367 1.06440087]
+ [0.90746936 3.01740384]
+ [1.72529989 2.94044173]
+ [1.24654006 2.01424983]
+ [3.08930462 2.89505338]
+ [2.70143322 2.0085571 ]
+ [1.99192699 1.07864197]
+]
+```
+
+### Labels for GridDataSet
+<p align="center">
+<img src="./assets/grid_dataset_test_data_labeled.png" alt="GridDataset Training Data" width="75%">
+</p>
 
 ## K Nearest Neighbors (KNN)
 
