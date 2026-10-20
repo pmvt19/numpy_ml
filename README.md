@@ -37,7 +37,26 @@ This repository holds numpy implementations of common machine learning algorithm
 
 ## Datasets
 ### GridDataSet
-(Image of grid dataset)
+
+The Grid Dataset is sampled from 9 gaussian distributions with distinct means and the same variance (5).
+
+Standard Means:
+```
+Cluster: 0 -> Mean: (1, 1)
+Cluster: 1 -> Mean: (1, 2)
+Cluster: 2 -> Mean: (1, 3)
+Cluster: 3 -> Mean: (2, 1)
+Cluster: 4 -> Mean: (2, 2)
+Cluster: 5 -> Mean: (2, 3)
+Cluster: 6 -> Mean: (3, 1)
+Cluster: 7 -> Mean: (3, 2)
+Cluster: 8 -> Mean: (3, 3)
+```
+
+The following is a visual representation of the train dataset:
+<p align="center">
+<img src="./assets/grid_dataset_train_data.png" alt="GridDataset Training Data" width="75%">
+</p>
 
 ## K-Means
 
