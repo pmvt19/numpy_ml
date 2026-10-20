@@ -1,3 +1,10 @@
+# Numpy ML
+
+<p align="center">
+<img src="./assets/numpy_ml.png" alt="NumpyML Logo" width="75%">
+</p>
+
+
 - Neural Network
 -- Linear Layers
 -- Loss Functions
