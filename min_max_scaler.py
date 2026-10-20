@@ -13,7 +13,7 @@ class MinMaxScaler:
         self.mins = np.min(data, axis=0, keepdims=True)
         shifted_data = data - self.mins
 
-        # Scale Dat to have a max value of 1
+        # Scale Data to have a max value of 1
         self.maxs = np.max(shifted_data, axis=0, keepdims=True)
         scaled_data = shifted_data / self.maxs
 
