@@ -42,11 +42,20 @@ This repository holds numpy implementations of common machine learning algorithm
 ## K-Means
 
 ```python
+from data_generator import GridDataSet
 from numpy_ml.k_means import KMeans
 
-kmeans = KMeans()
+# Initialize Dataset
+dataset = GridDataSet()
 
-kmeans.fit(**data**)
+# Create KMeans
+kmeans = KMeans(k=9)
+
+# Fit data to get k centroids
+centroids = kmeans.fit(dataset.train_data)
+
+# Assign cluster labels to test dataset
+labels = kmeans.predict(dataset.test_data)
 ```
 
 Results:
