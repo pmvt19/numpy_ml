@@ -92,4 +92,5 @@ if __name__ == "__main__":
     labels = kmeans.predict(dataset.test_data)
 
     plt.scatter(dataset.test_data[:, 0], dataset.test_data[:, 1], c=labels)
+    plt.title("Predicted Labels for Test Data")
     plt.show()
