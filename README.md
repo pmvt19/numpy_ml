@@ -65,10 +65,19 @@ Centroids
 
 ```python
 from numpy_ml.knn import KNN
+from data_generator import GridDataSet
 
+# Initialize Dataset
+dataset = GridDataSet()
+
+# Create K-Nearest Neighbors
 knn = KNN()
 
-knn.fit(**data**)
+# Give KNN the datasets
+knn.fit(dataset.train_data, dataset.train_labels)
+
+# Predict Class Labels for Test Data with k neighbors
+predicted_labels = knn.predict(dataset.test_data, k=3)
 ```
 
 ## Neural Network
