@@ -4,34 +4,6 @@
 <img src="./assets/numpy_ml.png" alt="NumpyML Logo" width="75%">
 </p>
 
-
-- Neural Network
--- Linear Layers
--- Loss Functions
---- BCE Loss
---- Cross Entropy Loss
---- MSE Loss
--- Activation Functions
---- ReLu
---- LeakyReLu
-
-Completed:
-- K-Means
-
-- KNN Classification
-
-- MinMaxScaler
-
-# K-Means Example
-# KNN Example
-# Linear Regression Example? (maybe not)
-
-# neural network example
-
-# Training Curves
-# Toy Example
-# MNIST Example
-
 # Numpy ML
 This repository holds numpy implementations of common machine learning algorithms
 
@@ -102,7 +74,7 @@ labels = kmeans.predict(dataset.test_data)
 ]
 ```
 
-### Labels for GridDataSet
+### Predicted Labels for GridDataSet
 <p align="center">
 <img src="./assets/grid_dataset_test_data_labeled.png" alt="GridDataset Training Data" width="75%">
 </p>
@@ -131,3 +103,23 @@ predicted_labels = knn.predict(dataset.test_data, k=3)
 ```python 
 from numpy_ml.neuarl_network import LinearLayer, ReLu
 ```
+
+### Toy Example
+
+#### Training Curve
+
+### MNIST Example
+
+
+<!-- # TODO:
+- Neural Network
+-- Linear Layers
+-- Loss Functions
+--- BCE Loss
+--- Cross Entropy Loss
+--- MSE Loss
+-- Activation Functions
+--- ReLu
+--- LeakyReLu
+
+# Linear Regression Example? (maybe not) -->
