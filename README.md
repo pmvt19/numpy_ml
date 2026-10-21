@@ -27,7 +27,7 @@ Cluster: 8 -> Mean: (3, 3)
 
 The following is a visual representation of the train dataset:
 <p align="center">
-<img src="./assets/grid_dataset_train_data.png" alt="GridDataset Training Data" width="75%">
+<img src="./assets/grid_dataset_train_data.svg" alt="GridDataset Training Data" width="75%">
 </p>
 
 ### Linear Dataset
