@@ -37,7 +37,7 @@ Ground Truth Formula: `y = mx + b` where `m=6.3` and `b=92.4`
 The dataset `x` range is `[-250, 250]`
 
 <p align="center">
-<img src="./assets/linear_dataset_train.png" alt="Linear Dataset Training Data" width="75%">
+<img src="./assets/linear_dataset_train_data.svg" alt="Linear Dataset Training Data" width="75%">
 </p>
 
 ## K-Means
