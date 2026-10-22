@@ -102,6 +102,9 @@ predicted_labels = knn.predict(dataset.test_data, k=3)
 
 ```python 
 from numpy_ml.neuarl_network import LinearLayer, ReLu
+
+net = Network()
+net.train(epochs=100, batch_size=40, data=dataset.train_data, labels=dataset.train_labels, show_training_curve=True)
 ```
 
 ### Toy Example
