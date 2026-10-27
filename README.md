@@ -8,6 +8,8 @@
 This repository holds numpy implementations of common machine learning algorithms
 
 ## Datasets
+We include a few rudimentary datasets to play around with this ML Algorithms. The following is a walkthrough of some of the included datasets:
+
 ### GridDataSet
 
 The Grid Dataset is sampled from 9 gaussian distributions with distinct means and the same variance (5).
@@ -38,6 +40,18 @@ The dataset `x` range is `[-250, 250]`
 
 <p align="center">
 <img src="./assets/linear_dataset_train_data.svg" alt="Linear Dataset Training Data" width="75%">
+</p>
+
+### Binary Classification Dataset
+A 2 dimensional dataset consisting of only 2 classes.
+
+```
+Class 0 Mean: (5, 5)   , Class 0 Standard Deviation: 3
+Class 1 Mean: (-2, -4) , Class 1 Standard Deviation: 3
+```
+
+<p align="center">
+<img src="./assets/binary_classification_train_dataset.svg" alt="Linear Dataset Training Data" width="75%">
 </p>
 
 ## K-Means
