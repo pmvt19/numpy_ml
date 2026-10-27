@@ -128,8 +128,8 @@ preds, loss = net.forward(dataset.test_data)
 #### Training Curve
 
 <p float="center">
-  <img src="assets/nn_training_curve.svg" width="50%"/>
-  <img src="assets/nn_accuracy_curve.svg" width="50%" />
+  <img src="assets/nn_training_curve.svg" width="48%"/>
+  <img src="assets/nn_accuracy_curve.svg" width="48%" />
 </p>
 
 ### MNIST Example
