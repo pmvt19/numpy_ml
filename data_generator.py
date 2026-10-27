@@ -36,22 +36,31 @@ class GridDataSet:
         self.train_data = self.train_data[:, :2]
         self.test_data = self.test_data[:, :2]
 
-    def visualize(self):
+    def visualize(self, save_dir: str | None = None):
         # Plot Training data
         plt.scatter(self.train_data[:, 0], self.train_data[:, 1], c=self.train_labels)
         plt.title("Labeled Training Data")
-        plt.show()
+        if save_dir:
+            plt.savefig(f"{save_dir}/grid_dataset_train_data.svg")
+        else:
+            plt.show()
 
         # Plot Test data
         plt.scatter(self.test_data[:, 0], self.test_data[:, 1], c=self.test_labels)
         plt.title("Labeled Testing Data")
-        plt.show()
+        if save_dir:
+            plt.savefig(f"{save_dir}/grid_dataset_test_data.svg")
+        else:
+            plt.show()
 
         # Plotting Train & Test Data
         plt.scatter(self.train_data[:, 0], self.train_data[:, 1], c=self.train_labels)
         plt.scatter(self.test_data[:, 0], self.test_data[:, 1], c=self.test_labels, alpha=0.3)
         plt.title("Labeled Training & Testing Data")
-        plt.show()
+        if save_dir:
+            plt.savefig(f"{save_dir}/grid_dataset_train_and_test_data.svg")
+        else:
+            plt.show()
 
 
 class LinearDataSet:
@@ -76,20 +85,26 @@ class LinearDataSet:
         self.test_labels_clean = self.test_data * self.m + self.b
         self.test_labels_noisy = self.test_labels_clean + np.random.normal(scale=self.noise_scale, size=self.test_data_size)
 
-    def visualize(self):
+    def visualize(self, save_dir: str | None = None):
         # Plot Training Data
         plt.scatter(self.train_data, self.train_labels_clean, color='blue', label='Clean Labels')
         plt.scatter(self.train_data, self.train_labels_noisy, color='red', label='Noisy Labels')
         plt.title("Linear Training Data")
         plt.legend()
-        plt.show()
+        if save_dir:
+            plt.savefig(f"{save_dir}/linear_dataset_train_data.svg")
+        else:
+            plt.show()
 
         # Plot Testing Data
         plt.scatter(self.test_data, self.test_labels_clean, color='blue', label='Clean Labels')
         plt.scatter(self.test_data, self.test_labels_noisy, color='red', label='Noisy Labels')
         plt.title("Linear Testing Data")
         plt.legend()
-        plt.show()
+        if save_dir:
+            plt.savefig(f"{save_dir}/linear_dataset_test_data.svg")
+        else:
+            plt.show()
 
 class BinaryClassificationDataset:
     def __init__(self):
@@ -131,5 +146,5 @@ class BinaryClassificationDataset:
         plt.show()
 
 if __name__ == "__main__":
-    dataset = BinaryClassificationDataset()
-    dataset.visualize()
+    dataset = LinearDataSet()
+    dataset.visualize(save_dir="./assets")
