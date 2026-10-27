@@ -130,21 +130,34 @@ class BinaryClassificationDataset:
         self.train_labels = np.vstack((np.zeros((self.train_class_size, 1)), np.ones((self.train_class_size, 1))))
         self.test_labels = np.vstack((np.zeros((self.test_class_size, 1)), np.ones((self.test_class_size, 1))))
 
-    def visualize(self):
+    def visualize(self, save_dir: str | None = None):
         # Plot Training Data
         plt.scatter(self.train_data[:, 0], self.train_data[:, 1], c=self.train_labels)
-        plt.show()
+        plt.title("Labeled Training Data")
+        if save_dir:
+            plt.savefig(f"{save_dir}/binary_classification_train_dataset.svg")
+        else:
+            plt.show()
 
         # Plot Testing Data
+        plt.clf()
         plt.scatter(self.test_data[:, 0], self.test_data[:, 1], c=self.test_labels)
-        plt.show()
+        plt.title("Labeled Testing Data")
+        if save_dir:
+            plt.savefig(f"{save_dir}/binary_classification_test_dataset.svg")
+        else:
+            plt.show()
 
         # Plotting Train & Test Data
+        plt.clf()
         plt.scatter(self.train_data[:, 0], self.train_data[:, 1], c=self.train_labels)
         plt.scatter(self.test_data[:, 0], self.test_data[:, 1], c=self.test_labels, alpha=0.3)
         plt.title("Labeled Training & Testing Data")
-        plt.show()
+        if save_dir:
+            plt.savefig(f"{save_dir}/binary_classification_train_and_test_dataset.svg")
+        else:
+            plt.show()
 
 if __name__ == "__main__":
-    dataset = LinearDataSet()
+    dataset = BinaryClassificationDataset()
     dataset.visualize(save_dir="./assets")
