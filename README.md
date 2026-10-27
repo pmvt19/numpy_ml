@@ -123,8 +123,6 @@ net.train(epochs=100, batch_size=40, data=dataset.train_data, labels=dataset.tra
 preds, loss = net.forward(dataset.test_data)
 ```
 
-### Toy Example
-
 #### Training Curve
 
 <p float="center">
