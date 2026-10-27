@@ -6,9 +6,11 @@ class Layer:
         self.cache = {}
 
     def forward(self, data: np.ndarray):
+        """Returns Forward Pass of this function applied to data"""
         raise NotImplementedError
 
     def backward(self, de_dh: np.ndarray) -> np.ndarray:
+        """Returns Downstream Gradient"""
         raise NotImplementedError
 
     def clear(self):
@@ -147,7 +149,7 @@ class BinaryCrossEntropyLoss(Layer):
         return de_dz
 
 class Network:
-    def __init__(self):
+    def __init__(self, layers: list[Layer] = [], loss: Layer = None):
         self.layers: list[Layer] = [
             LinearLayer(2, 10),
             ReLu(),
@@ -216,7 +218,7 @@ if __name__ == "__main__":
     yhats, _ = net.forward(dataset.test_data, dataset.test_labels)
     print(f"Test Accuracy: {np.mean((yhats > 0.5).astype(np.int32) == dataset.test_labels)}")
 
-    net.train(epochs=100, batch_size=15, data=dataset.train_data, labels=dataset.train_labels, show_training_curve=True)
+    net.train(epochs=100, batch_size=40, data=dataset.train_data, labels=dataset.train_labels, show_training_curve=True)
 
     yhats, _ = net.forward(dataset.train_data, dataset.train_labels)
     print(f"Train Accuracy: {np.mean((yhats > 0.5).astype(np.int32) == dataset.train_labels)}")
