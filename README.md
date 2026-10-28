@@ -88,7 +88,7 @@ labels = kmeans.predict(dataset.test_data)
 ]
 ```
 
-### Predicted Labels for GridDataSet
+### Assigned Clusters for GridDataSet
 <p align="center">
 <img src="./assets/grid_dataset_test_data_labeled_kmeans.svg" alt="GridDataset Test Data Labeled" width="75%">
 </p>
