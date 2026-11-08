@@ -125,13 +125,17 @@ class BinaryCrossEntropyLoss(Layer):
             np.exp(data) / (1.0 + np.exp(data))
         )
 
-    def forward(self, data: np.ndarray, y: np.ndarray):
+    def forward(self, data: np.ndarray, y: np.ndarray | None):
         """
             data: (B, 1)
             y:    (B, 1)
         """
         # Logits to Probabilities
         yhat = self.sigmoid(data) # (B, 1)
+
+        if y is None:
+            return yhat, None
+        
         losses = -y * np.log(yhat) - (1 - y) * np.log(1 - yhat) # (B, 1)
 
         # Cache
@@ -156,9 +160,9 @@ class Network:
             LinearLayer(10, 1),
         ]
 
-        self.loss = BinaryCrossEntropyLoss()
+        self.loss = loss
 
-    def forward(self, data: np.ndarray, labels: np.ndarray):
+    def forward(self, data: np.ndarray, labels: np.ndarray | None):
         h = data
         for layer in self.layers:
             h = layer.forward(h)
@@ -207,24 +211,34 @@ class Network:
 
 if __name__ == "__main__":
     from data_generator import BinaryClassificationDataset
+    np.random.seed(5) # 5: Good Seed
 
+    # Initialize Dataset
     dataset = BinaryClassificationDataset()
 
-    net = Network()
+    # Define Network Architecture
+    layers = [
+        LinearLayer(2, 10),
+        ReLu(),
+        LinearLayer(10, 1),
+    ]
 
-    yhats, _ = net.forward(dataset.train_data, dataset.train_labels)
-    print(f"Train Accuracy: {np.mean((yhats > 0.5).astype(np.int32) == dataset.train_labels)}")
+    # Create Network
+    net = Network(layers=layers, loss=BinaryCrossEntropyLoss())
 
-    yhats, _ = net.forward(dataset.test_data, dataset.test_labels)
-    print(f"Test Accuracy: {np.mean((yhats > 0.5).astype(np.int32) == dataset.test_labels)}")
+    # yhats, _ = net.forward(dataset.train_data, dataset.train_labels)
+    # print(f"Train Accuracy: {np.mean((yhats > 0.5).astype(np.int32) == dataset.train_labels)}")
 
-    net.train(epochs=100, batch_size=40, data=dataset.train_data, labels=dataset.train_labels, show_training_curve=True)
+    # yhats, _ = net.forward(dataset.test_data, dataset.test_labels)
+    # print(f"Test Accuracy: {np.mean((yhats > 0.5).astype(np.int32) == dataset.test_labels)}")
 
-    yhats, _ = net.forward(dataset.train_data, dataset.train_labels)
-    print(f"Train Accuracy: {np.mean((yhats > 0.5).astype(np.int32) == dataset.train_labels)}")
+    # net.train(epochs=100, batch_size=40, data=dataset.train_data, labels=dataset.train_labels, show_training_curve=True)
 
-    yhats, _ = net.forward(dataset.test_data, dataset.test_labels)
-    print(f"Accuracy: {np.mean((yhats > 0.5).astype(np.int32) == dataset.test_labels)}")
+    # yhats, _ = net.forward(dataset.train_data, dataset.train_labels)
+    # print(f"Train Accuracy: {np.mean((yhats > 0.5).astype(np.int32) == dataset.train_labels)}")
+
+    # yhats, _ = net.forward(dataset.test_data, dataset.test_labels)
+    # print(f"Accuracy: {np.mean((yhats > 0.5).astype(np.int32) == dataset.test_labels)}")
 
     
     
