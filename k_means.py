@@ -93,4 +93,4 @@ if __name__ == "__main__":
 
     plt.scatter(dataset.test_data[:, 0], dataset.test_data[:, 1], c=labels)
     plt.title("Predicted Labels for Test Data")
-    plt.show()
+    plt.savefig("assets/grid_dataset_test_data_labeled_kmeans.svg")
